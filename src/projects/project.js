@@ -2,17 +2,18 @@
 const project = () => {
   const projectsCol = document.createElement('div');
   projectsCol.className = 'flex flex-col';
-  projectsCol.innerHTML = 'Hello World';
 
-  const project = document.createElement('form');
-  project.className = 'flex flex-col';
+
+  const form = document.createElement('form');
+  form.className = 'flex flex-col';
 
   const pInput = document.createElement('input');
   pInput.setAttribute('id', 'title');
   pInput.setAttribute('type', 'text');
   pInput.setAttribute('placeholder', 'Title');
-  project.appendChild(pInput);
-  projectsCol.appendChild(project);
+  pInput.className = 'form-input';
+  form.appendChild(pInput);
+  projectsCol.appendChild(form);
 
 
   const ptitle = document.createElement('div');
@@ -22,25 +23,23 @@ const project = () => {
   pSubmit.className = 'pSubmit flex w-24';
   const submit = document.createElement('button');
   submit.setAttribute('id', 'submit');
-  submit.setAttribute('type', 'submit');
+  // submit.setAttribute('type', 'submit');
 
   submit.className = 'submit w-24 h-24';
 
 
   pSubmit.appendChild(submit);
-  project.appendChild(pSubmit);
-  projectsCol.appendChild(project);
+  form.appendChild(pSubmit);
+  projectsCol.appendChild(form);
   return projectsCol;
 };
 
-// const submit = document.getElementById('submit');
-//
-//
-// submit.onclick = (e) => {
-//   e.preventDefault();
-//   addProject();
-//   window.location.reload();
-// };
+const projectRender = (p) => {
+  const pBody = document.createElement('div');
+  const pTitle = document.createElement('div');
+  pTitle.innerHTML = `${p.title}`;
+  pBody.appendChild(pTitle);
+  return pBody;
+};
 
-
-export default project();
+export { project, projectRender };
