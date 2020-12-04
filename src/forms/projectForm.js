@@ -46,7 +46,7 @@ const projectForm = () => {
 
   const descriptionInput = document.createElement('textarea');
   descriptionInput.id = 'discription';
-  descriptionInput.classList.add('form-textarea');
+  descriptionInput.classList.add('form-textarea', 'rounded-lg');
   descriptionInput.setAttribute('name', 'description');
   descriptionInput.setAttribute('rows', '3');
   descriptionDiv.appendChild(descriptionInput);
@@ -76,7 +76,7 @@ const projectForm = () => {
   const submit = document.createElement('button');
   submit.id = 'submit';
   submit.setAttribute('type', 'submit');
-  submit.classList.add('w-24', 'h-24');
+  submit.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
   form.appendChild(submit);
 
 

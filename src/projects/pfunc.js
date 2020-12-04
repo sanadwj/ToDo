@@ -1,4 +1,3 @@
-import { project, projectRender } from './project';
 
 import '../tailwind.css';
 
