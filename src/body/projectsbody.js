@@ -1,5 +1,6 @@
+import projects from '../projects/projects';
 
-const render = () => {
+const renderBody = () => {
   const { body } = document;
 
 
@@ -27,12 +28,16 @@ const render = () => {
 
   const pContainer = document.createElement('div');
   pContainer.classList.add('pContainer');
-  pContainer.setAttribute('id', 'pContainer');
+  pContainer.setAttribute('id', 'projects-container');
 
 
   const pDetails = document.createElement('section');
   pDetails.classList.add('pDetails');
   pDetails.setAttribute('id', 'pDetails');
 
+ 
 
+  projects();
 };
+
+export default renderBody;

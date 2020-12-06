@@ -1,5 +1,8 @@
+import Todo from '../utils/todo';
 
-const todoForm = (project, idx = false) => {
+import renderProjects from '../projects/projects';
+
+const todoForm = (project, index = false) => {
   const { body } = document;
 
 
@@ -138,9 +141,13 @@ const todoForm = (project, idx = false) => {
   const submitBtn = document.createElement('button');
   submitBtn.setAttribute('type', 'submit');
   submitBtn.setAttribute('id', 'submitBtn');
-  submitBtn.innerHTML = `${idx} 'Edit' : 'Submit'`;
+  submitBtn.innerHTML = `${index} 'Edit' : 'Submit'`;
   form.appendChild(submitBtn);
 
   const closeBtn = document.createElement('span');
   form.appendChild(closeBtn);
+
+
 };
+
+export default todoForm;

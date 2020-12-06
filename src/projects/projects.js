@@ -1,11 +1,14 @@
+// eslint-disable-next-line import/no-cycle
+import renderProject from '../project/project';
 
-const projects = (project = false, pIdx = 0) => {
+
+const projects = (project = false, projectIndex = 0) => {
   const projects = JSON.parse(localStorage.getItem('projects'));
-  const container = document.getElementById('pContainer');
+  const container = document.getElementById('projects-container');
 
   container.innerHTML = '';
 
-  projects.forEach((project, idx) => {
+  projects.forEach((project, index) => {
     const pcontainer = document.createElement('div');
     pcontainer.classList.add('project-container');
     container.appendChild(pcontainer);
@@ -29,8 +32,8 @@ const projects = (project = false, pIdx = 0) => {
 
 
     const ptodos = document.createElement('div');
-    ptodos.classList.add('Otodos');
-    ptodos.innerHTML = `${project.todos.length}`;
+    ptodos.classList.add('todos');
+    ptodos.innerHTML = `${project.todos}`;
     pheader.appendChild(ptodos);
 
 
@@ -39,27 +42,8 @@ const projects = (project = false, pIdx = 0) => {
     pcontainer.appendChild(trashIcon);
 
 
-    trashIcon.addEventListener('click', () => {
-      localStorage.setItem(
-        'projects',
-        JSON.stringify(projects.slice(0, idx).concat(projects.slice(idx + 1))),
-      );
+    
+};
 
-      renderProjects();
-    });
 
-    ptitle.addEventListener('click', (e) => {
-      const selected = document.querySelector('#projects-container .selected');
-      if (selected) {
-        selected.classList.remove('selected');
-      }
-
-      e.target.classList.add('selected');
-      renderProject(project, idx);
-    });
-  });
-
-  if (projects.length > 0) {
-    renderProject(project || projects[0], pIdx);
-  }
-} 
+export default projects;

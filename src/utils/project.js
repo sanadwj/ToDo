@@ -1,10 +1,14 @@
-const Project = (title, description, pariority) => {
-  return { title, description, pariority };
-};
+class Project {
+  constructor(title, description, color) {
+    this.title = title;
+    this.description = description;
+    this.color = color;
+    this.todos = [];
+  }
 
-
-// addTodo(todo) {
-//   this.todos.push(todo);
-// }
+  addTodo(todo) {
+    this.todos.push(todo);
+  }
+}
 
 export default Project;

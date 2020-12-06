@@ -1,5 +1,7 @@
+import todos from '../projects/todos';
 
-const renderProject = (project, idx) => {
+
+const renderProject = (project, index) => {
   const projectContainer = document.querySelector('#pDetails');
   projectContainer.innerHTML = '';
 
@@ -10,7 +12,7 @@ const renderProject = (project, idx) => {
 
   const pTitle = document.createElement('div');
   pTitle.classList.add('projectTitle');
-  pTitle.innerHTML += ` ${project.title}`;
+  pTitle.textContent = project.title;
   pBody.appendChild(pTitle);
 
   const projectCircle = document.createElement('span');
@@ -24,9 +26,13 @@ const renderProject = (project, idx) => {
   pBody.appendChild(projectDescription);
 
 
-  const todos = document.createElement('div');
-  todos.setAttribute('id', 'todos');
-  todos.setAttribute('data-project-index', idx);
-  todos.className = 'todos';
-  pBody.appendChild(todos);
+  const todosDiv = document.createElement('div');
+  todosDiv.setAttribute('id', 'todos');
+  todosDiv.setAttribute('data-project-index', index);
+  todosDiv.className = 'todos';
+  pBody.appendChild(todosDiv);
+
+  todos(project);
 };
+
+export default renderProject;

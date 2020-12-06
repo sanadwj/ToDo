@@ -1,5 +1,6 @@
+import renderProjects from '../projects/projects';
 import Project from '../utils/project';
-import '../tailwind.css';
+
 
 const projectForm = () => {
   const { body } = document;
@@ -88,46 +89,7 @@ const projectForm = () => {
 
 
 
-  submit.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const title = tInput.value;
-    const description = descriptionInput.value;
-    const pariority = pariorityInput.value;
-
-    if (title && description) {
-      const projects = JSON.parse(localStorage.getItem('projects'));
-
-      const newProject = Project(title, description, pariority);
-      projects.push(newProject);
-
-      localStorage.setItem('projects', JSON.stringify(projects));
-      // deleteForm(e)
-
-      // projectForm();
-    } else {
-      if (!title) {
-        tWarning.style.display = 'block';
-
-        setInterval(() => {
-          tWarning.style.display = 'none';
-        }, 6000);
-      }
-
-      if (description.length < 10) {
-        dWarning.style.display = 'block';
-
-        setTimeout(() => {
-          dWarning.style.display = 'none';
-        }, 8000);
-      }
-    }
-  });
-
-  return body;
 };
-
 projectForm();
-
 
 export default projectForm;
