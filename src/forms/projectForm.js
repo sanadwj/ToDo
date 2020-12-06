@@ -81,15 +81,68 @@ const projectForm = () => {
   form.appendChild(submit);
 
 
-  const close = document.createElement('span');
-  form.appendChild(close);
+  const cancel = document.createElement('button');
+  cancel.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
+  form.appendChild(cancel);
 
 
   body.appendChild(container);
 
 
 
+  submit.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const title = tInput.value;
+    const description = descriptionInput.value;
+    const pariority = pariorityInput.value;
+
+    if (title && description) {
+      const projects = JSON.parse(localStorage.getItem('projects'));
+
+      const newProject = new Project(title, description, pariority);
+      projects.push(newProject);
+
+      localStorage.setItem('projects', JSON.stringify(projects));
+      deleteForm(e)
+
+      renderProjects();
+    } else {
+      if (!title) {
+        tWarning.style.display = 'block';
+
+        setInterval(() => {
+          tWarning.style.display = 'none';
+        }, 6000);
+      }
+
+      if (description.length < 10) {
+        dWarning.style.display = 'block';
+
+        setTimeout(() => {
+          dWarning.style.display = 'none';
+        }, 6000);
+      }
+    }
+  });
+
+  function deleteForm2(e) {
+    if (e.key === 'Escape') {
+      formContainer.remove();
+    }
+
+    document.removeEventListener('keydown', deleteForm2);
+  }
+
+  function deleteForm(e) {
+    container.remove();
+    e.target.removeEventListener('click', deleteForm);
+    document.removeEventListener('keydown', deleteForm2);
+  }
+
+  cancel.addEventListener('click', deleteForm);
+
+  document.addEventListener('keydown', deleteForm2);
 };
-projectForm();
 
 export default projectForm;

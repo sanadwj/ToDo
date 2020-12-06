@@ -35,7 +35,14 @@ const renderBody = () => {
   pDetails.classList.add('pDetails');
   pDetails.setAttribute('id', 'pDetails');
 
- 
+  pTitle.appendChild(arrow);
+  pTitle.appendChild(project);
+  pHead.appendChild(pTitle);
+  pBody.appendChild(pHead);
+  pBody.appendChild(pContainer);
+  bodyDiv.appendChild(pBody);
+  bodyDiv.appendChild(pDetails);
+  body.appendChild(bodyDiv);
 
   projects();
 };

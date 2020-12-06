@@ -5,8 +5,7 @@ import Todo from './utils/todo';
 import '@fortawesome/fontawesome-free/js/all';
 import './tailwind.css';
 
-
-
+import renderProject from './project/project';
 
 
 navBar();

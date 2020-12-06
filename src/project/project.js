@@ -1,4 +1,7 @@
+// eslint-disable-next-line import/no-cycle
 import todos from '../projects/todos';
+// eslint-disable-next-line import/no-cycle
+import add from '../todo/todo';
 
 
 const renderProject = (project, index) => {
@@ -33,6 +36,7 @@ const renderProject = (project, index) => {
   pBody.appendChild(todosDiv);
 
   todos(project);
+  add(project);
 };
 
 export default renderProject;

@@ -33,7 +33,7 @@ const projects = (project = false, projectIndex = 0) => {
 
     const ptodos = document.createElement('div');
     ptodos.classList.add('todos');
-    ptodos.innerHTML = `${project.todos}`;
+    ptodos.innerHTML = `${project.todos.length}`;
     pheader.appendChild(ptodos);
 
 
@@ -42,7 +42,29 @@ const projects = (project = false, projectIndex = 0) => {
     pcontainer.appendChild(trashIcon);
 
 
-    
+    trashIcon.addEventListener('click', () => {
+      localStorage.setItem(
+        'projects',
+        JSON.stringify(projects.slice(0, index).concat(projects.slice(index + 1))),
+      );
+
+      projects();
+    });
+
+    ptitle.addEventListener('click', (e) => {
+      const selected = document.querySelector('#projects-container .selected');
+      if (selected) {
+        selected.classList.remove('selected');
+      }
+
+      e.target.classList.add('selected');
+      renderProject(project, index);
+    });
+  });
+
+  if (projects.length > 0) {
+    renderProject(project || projects[0], projectIndex);
+  }
 };
 
 

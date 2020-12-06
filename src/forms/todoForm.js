@@ -1,5 +1,6 @@
 import Todo from '../utils/todo';
 
+// eslint-disable-next-line import/no-cycle
 import renderProjects from '../projects/projects';
 
 const todoForm = (project, index = false) => {
@@ -141,13 +142,89 @@ const todoForm = (project, index = false) => {
   const submitBtn = document.createElement('button');
   submitBtn.setAttribute('type', 'submit');
   submitBtn.setAttribute('id', 'submitBtn');
-  submitBtn.innerHTML = `${index} 'Edit' : 'Submit'`;
+  submitBtn.textContent = index ? 'Edit' : 'Submit';
   form.appendChild(submitBtn);
 
   const closeBtn = document.createElement('span');
   form.appendChild(closeBtn);
 
 
+  if (index) {
+    tInput.value = project.todos[index].title;
+
+    switch (project.todos[index].priority) {
+      case 'high':
+        priorityHigh.setAttribute('selected', 'true');
+        break;
+      case 'medium':
+        priorityMedium.setAttribute('selected', 'true');
+        break;
+      case 'low':
+        priorityLow.setAttribute('selected', 'true');
+        break;
+      default:
+        break;
+    }
+
+    dateInput.value = project.todos[index].dueDate;
+    descriptionInput.value = project.todos[index].description;
+  }
+  function removeForm(e) {
+    container.remove();
+    e.target.removeEventListener('click', removeForm);
+  }
+
+  function showWarning(element, elementInput) {
+    element.style.display = 'block';
+    elementInput.classList.add('is-invalid');
+
+    setTimeout(() => {
+      element.style.display = 'none';
+      elementInput.classList.remove('is-invalid');
+    }, 6000);
+  }
+
+  closeBtn.addEventListener('click', removeForm);
+
+
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const title = tInput.value;
+    const description = descriptionInput.value;
+    const duedate = dateInput.value;
+    const priority = priorityInput.value;
+
+    if (title && description && duedate !== '') {
+      const container = document.getElementById('todos');
+      const projectIndex = Number(container.getAttribute('data-project-index'));
+
+      const newTodo = Todo(title, description, duedate, priority);
+
+      if (index) {
+        project.todos[index] = newTodo;
+      } else {
+        project.todos.push(newTodo);
+      }
+
+      const projects = JSON.parse(localStorage.getItem('projects'));
+      projects[projectIndex] = project;
+
+      localStorage.setItem('projects', JSON.stringify(projects));
+
+      removeForm(e);
+
+      renderProjects(projects[projectIndex], projectIndex);
+    } else {
+      if (!title) {
+        showWarning(tWarning, tInput);
+      } if (!description) {
+        showWarning(descriptionWarning, descriptionInput);
+      } if (duedate === '') {
+        showWarning(dateWarning, dateInput);
+      }
+    }
+  });
 };
 
 export default todoForm;
