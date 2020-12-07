@@ -29,13 +29,12 @@ const projectForm = () => {
   tInput.setAttribute('type', 'text');
   tInput.setAttribute('name', 'title');
   tDiv.appendChild(tInput);
-  // tInput.setAttribute('aria-describedby', 'titleWarning');
 
 
   const tWarning = document.createElement('small');
   tWarning.id = 'tWarning';
   tWarning.className = 'form-text text-danger';
-  tWarning.textContent = 'Project title should atleast have 5 characters';
+  tWarning.textContent = 'Please Enter a Project Title';
   tWarning.style.display = 'none';
   tDiv.appendChild(tWarning);
 
@@ -55,7 +54,7 @@ const projectForm = () => {
 
   const dWarning = document.createElement('small');
   dWarning.id = 'dnWarning';
-  dWarning.textContent = 'Project Description should atleast have 10 characters';
+  dWarning.textContent = 'Please Enter a Project Description';
   dWarning.style.display = 'none';
   descriptionDiv.appendChild(dWarning);
 
@@ -89,7 +88,6 @@ const projectForm = () => {
   body.appendChild(container);
 
 
-
   submit.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -104,7 +102,8 @@ const projectForm = () => {
       projects.push(newProject);
 
       localStorage.setItem('projects', JSON.stringify(projects));
-      deleteForm(e)
+      // eslint-disable-next-line no-use-before-define
+      deleteForm(e);
 
       renderProjects();
     } else {
@@ -116,7 +115,7 @@ const projectForm = () => {
         }, 6000);
       }
 
-      if (description.length < 10) {
+      if (!description) {
         dWarning.style.display = 'block';
 
         setTimeout(() => {
@@ -128,7 +127,7 @@ const projectForm = () => {
 
   function deleteForm2(e) {
     if (e.key === 'Escape') {
-      formContainer.remove();
+      container.remove();
     }
 
     document.removeEventListener('keydown', deleteForm2);

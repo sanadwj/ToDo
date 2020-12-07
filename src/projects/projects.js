@@ -2,9 +2,9 @@
 import renderProject from '../project/project';
 
 
-const projects = (project = false, projectIndex = 0) => {
+const allProjects = (project = false, projectIndex = 0) => {
   const projects = JSON.parse(localStorage.getItem('projects'));
-  const container = document.getElementById('projects-container');
+  const container = document.querySelector('#projects-container');
 
   container.innerHTML = '';
 
@@ -37,27 +37,23 @@ const projects = (project = false, projectIndex = 0) => {
     pheader.appendChild(ptodos);
 
 
-    const trashIcon = document.createElement('div');
-    trashIcon.className = 'remove-btn';
-    pcontainer.appendChild(trashIcon);
+    const trash = document.createElement('div');
+    trash.className = 'remove-btn';
+    trash.innerHTML = '<i class="fas fa-trash"></i>';
+    pcontainer.appendChild(trash);
 
 
-    trashIcon.addEventListener('click', () => {
+    trash.addEventListener('click', () => {
       localStorage.setItem(
         'projects',
         JSON.stringify(projects.slice(0, index).concat(projects.slice(index + 1))),
       );
 
-      projects();
+      allProjects();
     });
 
-    ptitle.addEventListener('click', (e) => {
-      const selected = document.querySelector('#projects-container .selected');
-      if (selected) {
-        selected.classList.remove('selected');
-      }
 
-      e.target.classList.add('selected');
+    pcontainer.addEventListener('click', (e) => {
       renderProject(project, index);
     });
   });
@@ -68,4 +64,4 @@ const projects = (project = false, projectIndex = 0) => {
 };
 
 
-export default projects;
+export default allProjects;

@@ -23,32 +23,11 @@ const todos = (project) => {
     todosDiv.setAttribute('id', 'todosDiv');
     container.appendChild(todosDiv);
 
-    // const ex = document.createElement('div');
-    // ex.setAttribute('type', 'button');
-    // ex.setAttribute('data-toggle', 'collapse');
-    // ex.setAttribute('data-target', `collapse-${index}`); // value should target collapse ID
-    // ex.setAttribute('aria-expanded', 'true');
-    // ex.setAttribute('aria-controls', `collapse-${index}`);
-    // ex.className = 'text-3xl'
-    // ex.innerHTML = '<i class="fas fa-bars"></i>'
-    // todosDiv.appendChild(ex)
-
 
     const fDiv = document.createElement('div');
     fDiv.className = 'container flex';
     fDiv.setAttribute('id', `todo-${index}`);
     todosDiv.appendChild(fDiv);
-
-    const angleRight = document.createElement('div');
-    angleRight.innerHTML = '<i class="fas fa-angle-right"></i>';
-    angleRight.style.display = 'block';
-    fDiv.appendChild(angleRight);
-
-
-    const angleDown = document.createElement('div');
-    angleDown.innerHTML = '<i class="fas fa-angle-down"></i>';
-    angleDown.style.display = 'none';
-    fDiv.appendChild(angleDown);
 
 
     const checkBox = document.createElement('input');
@@ -69,9 +48,6 @@ const todos = (project) => {
     editBtn.setAttribute('data-index', index);
     fDiv.appendChild(editBtn);
 
-
-    // const bars = document.createElement('div');
-    // bars.innerHTML = '<i class="fas fa-bars"></i>';
 
     const expand = document.createElement('div'); // append to todosdiv
     expand.setAttribute('id', `collapse-${index}`);
@@ -119,7 +95,6 @@ const todos = (project) => {
     trash.setAttribute('data-index', index);
     headerDiv.appendChild(trash);
 
-    
 
     trash.addEventListener('click', (e) => {
       projects[projectIndex].todos = project.todos.filter(

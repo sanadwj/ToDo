@@ -20,7 +20,6 @@ const todoForm = (project, index = false) => {
 
   const tHead = document.createElement('h3');
   tHead.className = 'text-2xl font-bold';
-  tHead.innerHTML = 'New Todo';
   form.appendChild(tHead);
 
 
@@ -89,7 +88,7 @@ const todoForm = (project, index = false) => {
   priorityDiv.appendChild(priorityLabel);
 
 
-  const priorityInput = document.createElement('input');
+  const priorityInput = document.createElement('select');
   priorityInput.className = 'mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   priorityInput.setAttribute('name', 'priority');
   priorityInput.setAttribute('id', 'priority');
@@ -149,42 +148,30 @@ const todoForm = (project, index = false) => {
   form.appendChild(closeBtn);
 
 
-  if (index) {
-    tInput.value = project.todos[index].title;
-
-    switch (project.todos[index].priority) {
-      case 'high':
-        priorityHigh.setAttribute('selected', 'true');
-        break;
-      case 'medium':
-        priorityMedium.setAttribute('selected', 'true');
-        break;
-      case 'low':
-        priorityLow.setAttribute('selected', 'true');
-        break;
-      default:
-        break;
+  function deleteForm2(e) {
+    if (e.key === 'Escape') {
+      container.remove();
     }
 
-    dateInput.value = project.todos[index].dueDate;
-    descriptionInput.value = project.todos[index].description;
-  }
-  function removeForm(e) {
-    container.remove();
-    e.target.removeEventListener('click', removeForm);
+    document.removeEventListener('keydown', deleteForm2);
   }
 
-  function showWarning(element, elementInput) {
+
+  function deleteForm(e) {
+    container.remove();
+    e.target.removeEventListener('click', deleteForm);
+    document.removeEventListener('keydown', deleteForm2);
+  }
+
+  function showWarning(element) {
     element.style.display = 'block';
-    elementInput.classList.add('is-invalid');
 
     setTimeout(() => {
       element.style.display = 'none';
-      elementInput.classList.remove('is-invalid');
     }, 6000);
   }
 
-  closeBtn.addEventListener('click', removeForm);
+  closeBtn.addEventListener('click', deleteForm);
 
 
   submitBtn.addEventListener('click', (e) => {
@@ -212,7 +199,7 @@ const todoForm = (project, index = false) => {
 
       localStorage.setItem('projects', JSON.stringify(projects));
 
-      removeForm(e);
+      deleteForm(e);
 
       renderProjects(projects[projectIndex], projectIndex);
     } else {
@@ -225,6 +212,27 @@ const todoForm = (project, index = false) => {
       }
     }
   });
+
+  if (index) {
+    tInput.value = project.todos[index].title;
+
+    switch (project.todos[index].priority) {
+      case 'high':
+        priorityHigh.setAttribute('selected', 'true');
+        break;
+      case 'medium':
+        priorityMedium.setAttribute('selected', 'true');
+        break;
+      case 'low':
+        priorityLow.setAttribute('selected', 'true');
+        break;
+      default:
+        break;
+    }
+
+    dateInput.value = project.todos[index].dueDate;
+    descriptionInput.value = project.todos[index].description;
+  }
 };
 
 export default todoForm;
