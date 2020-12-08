@@ -15,7 +15,7 @@ const allProjects = (project = false, projectIndex = 0) => {
 
 
     const pheader = document.createElement('div');
-    pheader.className = 'pheader flex flex-row w-full justify-around items-center' ;
+    pheader.className = 'pheader flex flex-row w-full justify-around items-center';
     pcontainer.appendChild(pheader);
 
 

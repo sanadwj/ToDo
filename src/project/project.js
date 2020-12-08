@@ -28,7 +28,7 @@ const renderProject = (project, index) => {
   const todosDiv = document.createElement('div');
   todosDiv.setAttribute('id', 'todos');
   todosDiv.setAttribute('data-project-index', index);
-  todosDiv.className = 'todos flex justify-center flex-col p-6';
+  todosDiv.className = 'todos flex justify-center flex-col p-6 overflow-y-auto';
   pBody.appendChild(todosDiv);
 
   todos(project);

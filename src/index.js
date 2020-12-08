@@ -22,7 +22,7 @@ if (!localStorage.getItem('projects')) {
   const t2 = Todo('Organizing my Desk', 'testing', '2020-12-28', 'low', false);
   newProject.addTodo(t1);
   newProject.addTodo(t2);
-  
+
 
   localStorage.setItem('projects', JSON.stringify(projects));
 }
