@@ -17,7 +17,7 @@ const todos = (project) => {
     todosDiv.className = 'container flex';
     todosDiv.setAttribute('type', 'button');
     todosDiv.setAttribute('data-toggle', 'collapse');
-    todosDiv.setAttribute('data-target', `#collapse-${index}`); // value should target collapse ID
+    todosDiv.setAttribute('data-target', `#collapse-${index}`);
     todosDiv.setAttribute('aria-expanded', 'true');
     todosDiv.setAttribute('aria-controls', `collapse-${index}`);
     todosDiv.setAttribute('id', 'todosDiv');
@@ -49,9 +49,9 @@ const todos = (project) => {
     fDiv.appendChild(editBtn);
 
 
-    const expand = document.createElement('div'); // append to todosdiv
+    const expand = document.createElement('div');
     expand.setAttribute('id', `collapse-${index}`);
-    expand.setAttribute('aria-labelledby', `todo-${index}`); // value should target cardheader ID
+    expand.setAttribute('aria-labelledby', `todo-${index}`);
     expand.setAttribute('data-parent', '#todosDiv');
     expand.className = 'collapse';
     todosDiv.appendChild(expand);
