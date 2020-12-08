@@ -2,7 +2,7 @@
 
 # ToDo's
 
-![App Preview](./src/Capture.png)
+![App Preview](./src/screenshoot.png)
 
 > The main objective for this application is to test the ability to use object constructors and to do DOM manipulation.
 
@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-[Live Demo](https://sleepy-feynman-40ee54.netlify.app/)
+[Live Demo](https://sanadwj.github.io/ToDo/)
 
 
 
@@ -24,7 +24,7 @@
 ### Getting Started
 > Open Terminal
 
->Copy : 
+> Run : 
 `
 git clone git@github.com:sanadwj/ToDo.git
 `
