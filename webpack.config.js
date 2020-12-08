@@ -2,18 +2,26 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    port: 3030,
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
   },
+  plugins: [
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new HtmlWebpackPlugin({
+      title: 'Development',
+    }),
+  ],
   module: {
     rules: [
       {
@@ -61,12 +69,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Todo List',
-    }),
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: false,
-    }),
-  ],
 };
