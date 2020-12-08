@@ -153,28 +153,28 @@ const todoForm = (project, index = false) => {
   form.appendChild(closeBtn);
 
 
-  function deleteForm2(e) {
+  const deleteForm2 = (e) => {
     if (e.key === 'Escape') {
       container.remove();
     }
 
     document.removeEventListener('keydown', deleteForm2);
-  }
+  };
 
 
-  function deleteForm(e) {
+  const deleteForm = (e) => {
     container.remove();
     e.target.removeEventListener('click', deleteForm);
     document.removeEventListener('keydown', deleteForm2);
-  }
+  };
 
-  function showWarning(element) {
+  const showWarning = (element) => {
     element.style.display = 'block';
 
     setTimeout(() => {
       element.style.display = 'none';
     }, 6000);
-  }
+  };
 
   closeBtn.addEventListener('click', deleteForm);
 

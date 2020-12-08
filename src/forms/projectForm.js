@@ -146,19 +146,19 @@ const projectForm = () => {
     }
   });
 
-  function deleteForm2(e) {
+  const deleteForm2 = (e) => {
     if (e.key === 'Escape') {
       container.remove();
     }
 
     document.removeEventListener('keydown', deleteForm2);
-  }
+  };
 
-  function deleteForm(e) {
+  const deleteForm = (e) => {
     container.remove();
     e.target.removeEventListener('click', deleteForm);
     document.removeEventListener('keydown', deleteForm2);
-  }
+  };
 
   cancel.addEventListener('click', deleteForm);
 
