@@ -1,5 +1,4 @@
 import projectForm from '../forms/projectForm';
-import todos from '../projects/todos';
 
 const navBar = () => {
   const { body } = document;
@@ -8,14 +7,16 @@ const navBar = () => {
 
 
   const nav = document.createElement('nav');
+  nav.className = 'flex justify-start items-center w-full bg-gray-700 shadow-lg';
   header.appendChild(nav);
 
   const addList = document.createElement('button');
-  addList.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
+  addList.innerHTML = 'New Project';
+  addList.className = 'flex justify-start mr-40 border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline';
   nav.appendChild(addList);
 
   const mainTitle = document.createElement('div');
-  mainTitle.classList.add('mainTitle');
+  mainTitle.className = 'text-white text-center  p-0 font-light flex text-2xl';
   mainTitle.innerHTML = 'ToDo\'s';
   nav.appendChild(mainTitle);
 

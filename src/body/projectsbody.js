@@ -5,17 +5,17 @@ const renderBody = () => {
 
 
   const bodyDiv = document.createElement('div');
-  bodyDiv.classList.add('panel');
+  bodyDiv.className = 'panel  flex';
   body.appendChild(bodyDiv);
 
 
   const pBody = document.createElement('div');
-  pBody.classList.add('action-panel');
+  pBody.className = 'action-panel bg-white shadow w-64 h-screen';
   bodyDiv.appendChild(pBody);
 
 
   const pHead = document.createElement('div');
-  pHead.classList.add('pHead');
+  pHead.className = 'pHead bg-white shadow w-64 py-2';
   pBody.appendChild(pHead);
 
 
@@ -25,18 +25,19 @@ const renderBody = () => {
 
 
   const project = document.createElement('div');
+  project.className = 'text-2xl text-purple-400 text-center';
   project.innerHTML = 'Projects List';
   pTitle.appendChild(project);
 
 
   const pContainer = document.createElement('div');
-  pContainer.classList.add('pContainer');
+  pContainer.className = 'pContainer';
   pContainer.setAttribute('id', 'projects-container');
   pBody.appendChild(pContainer);
 
 
-  const pDetails = document.createElement('section');
-  pDetails.classList.add('pDetails');
+  const pDetails = document.createElement('div');
+  pDetails.className = 'pDetails w-full';
   pDetails.setAttribute('id', 'pDetails');
   bodyDiv.appendChild(pDetails);
 

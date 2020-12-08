@@ -14,17 +14,13 @@ const renderProject = (project, index) => {
 
 
   const pTitle = document.createElement('div');
-  pTitle.classList.add('projectTitle');
+  pTitle.className = 'projectTitle pHead bg-white shadow w-full py-2 text-2xl text-purple-400 text-center';
   pTitle.textContent = project.title;
   pBody.appendChild(pTitle);
 
-  const projectCircle = document.createElement('span');
-  projectCircle.className = 'project-icon';
-  projectCircle.style.backgroundColor = project.color;
-  pTitle.appendChild(projectCircle);
 
   const projectDescription = document.createElement('div');
-  projectDescription.className = 'project-description';
+  projectDescription.className = 'project-description p-12';
   projectDescription.textContent = project.description;
   pBody.appendChild(projectDescription);
 
@@ -32,7 +28,7 @@ const renderProject = (project, index) => {
   const todosDiv = document.createElement('div');
   todosDiv.setAttribute('id', 'todos');
   todosDiv.setAttribute('data-project-index', index);
-  todosDiv.className = 'todos';
+  todosDiv.className = 'todos flex justify-center flex-col p-6';
   pBody.appendChild(todosDiv);
 
   todos(project);

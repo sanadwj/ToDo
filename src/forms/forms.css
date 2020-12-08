@@ -1,0 +1,21 @@
+body {
+  overflow-y: hidden;
+}
+
+.container .todo-container { 
+  position: absolute;
+  vertical-align: center;
+  right : 50%;
+  left: 50%;
+  z-index: 10;
+}
+
+.abs {
+  position: absolute;
+  vertical-align: center;
+  right : 25%;
+  top: 5rem;
+  z-index: 10;
+}
+
+

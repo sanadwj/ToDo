@@ -14,7 +14,7 @@ const todos = (project) => {
 
   project.todos.forEach((t, index) => {
     const todosDiv = document.createElement('div');
-    todosDiv.className = 'container flex';
+    todosDiv.className = 'container flex flex-col justify-center border border-indigo-500 bg-indigo-500 text-white rounded-md py-2  my-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline';
     todosDiv.setAttribute('type', 'button');
     todosDiv.setAttribute('data-toggle', 'collapse');
     todosDiv.setAttribute('data-target', `#collapse-${index}`);
@@ -25,7 +25,7 @@ const todos = (project) => {
 
 
     const fDiv = document.createElement('div');
-    fDiv.className = 'container flex';
+    fDiv.className = 'container flex justify-around';
     fDiv.setAttribute('id', `todo-${index}`);
     todosDiv.appendChild(fDiv);
 
@@ -53,7 +53,7 @@ const todos = (project) => {
     expand.setAttribute('id', `collapse-${index}`);
     expand.setAttribute('aria-labelledby', `todo-${index}`);
     expand.setAttribute('data-parent', '#todosDiv');
-    expand.className = 'collapse';
+    expand.className = 'collapse p-6';
     todosDiv.appendChild(expand);
 
     const sDiv = document.createElement('div');
@@ -65,6 +65,7 @@ const todos = (project) => {
 
     const dateFont = document.createElement('span');
     dateFont.innerHTML = '<i class="fas fa-calendar-alt"></i>';
+    dateFont.className = 'mr-2';
     dueDate.appendChild(dateFont);
 
     const dateValue = document.createElement('span');
@@ -75,6 +76,7 @@ const todos = (project) => {
     sDiv.appendChild(br1);
 
     const notes = document.createElement('textarea');
+    notes.className = 'mt-0  rounded-lg block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
     notes.innerHTML = `${t.notes}`;
     sDiv.appendChild(notes);
 
@@ -83,6 +85,7 @@ const todos = (project) => {
 
 
     const headerDiv = document.createElement('div');
+    headerDiv.className = 'flex justify-between';
     sDiv.appendChild(headerDiv);
 
 

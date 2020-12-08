@@ -2,19 +2,21 @@ import Todo from '../utils/todo';
 
 // eslint-disable-next-line import/no-cycle
 import renderProjects from '../projects/projects';
+import './forms.css';
 
 const todoForm = (project, index = false) => {
   const { body } = document;
+  body.className = 'relative';
 
 
   const container = document.createElement('div');
-  container.className = 'todo-container';
+  container.className = 'todo-container ';
   container.setAttribute('id', 'todo-container');
   body.appendChild(container);
 
 
   const form = document.createElement('form');
-  form.className = 'form py-12 grid grid-cols-1 gap-6';
+  form.className = 'form  grid grid-cols-1 bg-purple-50 gap-6 w-80 abs p-2.5 rounded-lg';
   container.appendChild(form);
 
 
@@ -36,7 +38,7 @@ const todoForm = (project, index = false) => {
 
 
   const tInput = document.createElement('input');
-  tInput.className = 'mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
+  tInput.className = 'mt-0 rounded-lg block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   tInput.setAttribute('type', 'text');
   tInput.setAttribute('name', 'title');
   tInput.setAttribute('id', 'todo-title');
@@ -62,7 +64,7 @@ const todoForm = (project, index = false) => {
 
 
   const dateInput = document.createElement('input');
-  dateInput.className = 'mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
+  dateInput.className = 'mt-0 rounded-lg block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   dateInput.setAttribute('type', 'date');
   dateInput.setAttribute('name', 'dateInput');
   dateInput.setAttribute('id', 'date');
@@ -89,7 +91,7 @@ const todoForm = (project, index = false) => {
 
 
   const priorityInput = document.createElement('select');
-  priorityInput.className = 'mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
+  priorityInput.className = 'mt-0 rounded-lg block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   priorityInput.setAttribute('name', 'priority');
   priorityInput.setAttribute('id', 'priority');
   priorityDiv.appendChild(priorityInput);
@@ -125,7 +127,7 @@ const todoForm = (project, index = false) => {
 
 
   const descriptionInput = document.createElement('textarea');
-  descriptionInput.className = 'mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
+  descriptionInput.className = 'mt-0 rounded-lg block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   descriptionInput.setAttribute('type', 'text');
   descriptionInput.setAttribute('name', 'description');
   descriptionInput.setAttribute('row', '3');
@@ -142,9 +144,12 @@ const todoForm = (project, index = false) => {
   submitBtn.setAttribute('type', 'submit');
   submitBtn.setAttribute('id', 'submitBtn');
   submitBtn.textContent = index ? 'Edit' : 'Submit';
+  submitBtn.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
   form.appendChild(submitBtn);
 
-  const closeBtn = document.createElement('span');
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = 'Cancel';
+  closeBtn.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
   form.appendChild(closeBtn);
 
 

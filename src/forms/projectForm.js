@@ -1,20 +1,23 @@
 import renderProjects from '../projects/projects';
 import Project from '../utils/project';
+import './forms.css';
 
 
 const projectForm = () => {
   const { body } = document;
+  body.className = 'relative';
   const container = document.createElement('div');
   container.id = 'project-form';
-  container.classList.add('container');
+  container.className = 'container bg-purple-200 ';
 
 
   const form = document.createElement('form');
-  form.classList.add('form');
+  form.className = 'grid grid-cols-1 gap-6 w-80 abs bg-purple-50 p-2.5 rounded-lg';
   container.appendChild(form);
 
 
   const header = document.createElement('h3');
+  header.className = 'text-2xl font-bold text-center text-purple-600';
   header.textContent = 'New Project';
   form.appendChild(header);
 
@@ -22,10 +25,15 @@ const projectForm = () => {
   tDiv.className = 'form-group';
   form.appendChild(tDiv);
 
+  const tLabel = document.createElement('div');
+  tLabel.className = 'text-gray-700';
+  tLabel.innerHTML = 'Title';
+  tDiv.appendChild(tLabel);
+
 
   const tInput = document.createElement('input');
   tInput.id = 'title';
-  tInput.classList.add('form-input');
+  tInput.className = 'mt-0 block w-full rounded-lg px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   tInput.setAttribute('type', 'text');
   tInput.setAttribute('name', 'title');
   tDiv.appendChild(tInput);
@@ -44,9 +52,15 @@ const projectForm = () => {
   form.appendChild(descriptionDiv);
 
 
+  const descriptionLabel = document.createElement('div');
+  descriptionLabel.className = 'text-gray-700';
+  descriptionLabel.innerHTML = 'Description';
+  descriptionDiv.appendChild(descriptionLabel);
+
+
   const descriptionInput = document.createElement('textarea');
   descriptionInput.id = 'discription';
-  descriptionInput.classList.add('form-textarea', 'rounded-lg');
+  descriptionInput.className = 'mt-0 block rounded-lg w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black';
   descriptionInput.setAttribute('name', 'description');
   descriptionInput.setAttribute('rows', '3');
   descriptionDiv.appendChild(descriptionInput);
@@ -64,23 +78,30 @@ const projectForm = () => {
   form.appendChild(pariorityDiv);
 
 
+  const pariorityLabel = document.createElement('div');
+  pariorityLabel.className = 'text-gray-700';
+  pariorityLabel.innerHTML = 'Color';
+  pariorityDiv.appendChild(pariorityLabel);
+
+
   const pariorityInput = document.createElement('input');
   pariorityInput.id = 'pariority';
-  pariorityInput.classList.add('form-input');
   pariorityInput.setAttribute('type', 'color');
   pariorityInput.setAttribute('name', 'project-color');
-  pariorityInput.setAttribute('value', '#ff0017');
+  pariorityInput.setAttribute('value', '#008000');
   pariorityDiv.appendChild(pariorityInput);
 
 
   const submit = document.createElement('button');
   submit.id = 'submit';
   submit.setAttribute('type', 'submit');
+  submit.innerHTML = 'Submit';
   submit.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
   form.appendChild(submit);
 
 
   const cancel = document.createElement('button');
+  cancel.innerHTML = 'Cancel';
   cancel.className = 'px-8 py-4 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2';
   form.appendChild(cancel);
 

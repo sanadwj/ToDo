@@ -11,7 +11,7 @@ if (!localStorage.getItem('projects')) {
 
   const newProject = new Project(
     'default',
-    `Here goes all of your default Todos,You can create 
+    `Here goes all of your default Todos, You can create 
     a new project for more organisation`,
     'green',
   );
